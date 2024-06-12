@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File System Search</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>File System Search</h1>
+    <div class="mb-3">
+        <input type="text" id="search-query" class="form-control" placeholder="Enter ID or Name">
+    </div>
+    <button id="search-btn" class="btn btn-primary">Search</button>
+    <div id="result" class="mt-3"></div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#search-btn').click(function() {
+        let query = $('#search-query').val();
+        $.post('search.php', {query: query}, function(data) {
+            if (data.file) {
+                $('#result').html(`<a href="${data.file}" target="_blank">View PDF</a>`);
+            } else {
+                $('#result').html('No file found.');
+            }
+        }, 'json');
+    });
+});
+</script>
+</body>
+</html>
