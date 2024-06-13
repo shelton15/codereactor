@@ -6,7 +6,7 @@
 
 Welcome to the Certificate Search System. This system allows users to search for their certificates using the following methods:
 
-## 1. By Name
+## 1. By Name!
 
 Users can search for their certificates by entering their full name. The system performs a case-insensitive search to match the entered name with the names in the database. Ensure that you enter both your first and last name correctly.
 
@@ -20,7 +20,7 @@ John Doe
 Each certificate is associated with a unique CRI code. Users can search for their certificates by entering this code. The format of the CRI code is `CRIxxRIxxx`, where `xx` and `xxx` are digits.
 
 Example: 
- CRI24RI001
+CRI24RI001
 
 
 ## 3. By GitHub Email
@@ -39,7 +39,7 @@ example@gmail.com
 
 ## Screenshot
 
-![Screenshot](assets/img/screenshot.jpg)
+![Screenshot](assets/img/screenshot.png)
 
 ## Contributing
 
