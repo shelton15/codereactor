@@ -1,0 +1,129 @@
+body, html {
+    height: 100%;
+    margin: 0;
+        background-image: url('../img/bg.png'); /* Specify the path to your background image */
+        background-size: cover; /* Ensures the background image covers the entire body */
+        background-repeat: no-repeat; /* Prevents the background image from repeating */
+        background-position: center center; /* Centers the background image */
+        background-attachment: fixed; /*Keeps the background image fixed during scroll*/
+        min-height: 100vh; /* Ensures the body covers the full viewport height */
+        opacity: 1;
+       
+    
+}
+
+.navbar {
+    /* position: fixed; */
+    margin-bottom: 30px;
+    background-color:black;
+}
+.navbar a{
+    color:yellow;
+}
+
+.search-bar-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    width: 100%;
+}
+
+#search-bar {
+    flex-grow: 1;
+    background-color: #f3efef;
+}
+
+#search-results {
+    margin-top: 20px;
+}
+
+.search-result-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.download-btn {
+    margin-left: 10px;
+}
+
+
+
+.card-box {
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.file-man-box {
+    padding: 20px;
+    border: 1px solid #e3eaef;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+
+
+.file-man-box .file-img-box {
+    line-height: 120px;
+    text-align: center
+}
+
+.file-man-box .file-img-box img {
+    height: 30px
+}
+
+.file-man-box .file-download {
+    font-size: 32px;
+    color: #98a6ad;
+    position: absolute;
+    right: 10px
+}
+
+.file-man-box .file-download:hover {
+    color: #313a46
+}
+
+.file-man-box .file-man-title {
+    padding-right: 25px
+}
+
+.file-man-box:hover {
+    -webkit-box-shadow: 0 0 24px 0 rgba(0, 0, 0, .06), 0 1px 0 0 rgba(0, 0, 0, .02);
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, .06), 0 1px 0 0 rgba(0, 0, 0, .02)
+}
+
+.file-man-box:hover .file-close {
+    visibility: visible
+}
+.text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+h5 {
+    font-size: 15px;
+}
+h2{
+    color: white;
+    
+}

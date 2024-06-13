@@ -1,5 +1,6 @@
 <?php
 require "vendor\shuchkin\simplexlsx\src\SimpleXLSX.php";
+use shuchkin\SimpleXLSX;
 
 function searchById($id) {
     $file = "assets/pdfs/$id.pdf";
@@ -10,8 +11,22 @@ function searchByName($name) {
     if ($xlsx = SimpleXLSX::parse('assets/db/CRI24RI001.xlsx')) {
         $rows = $xlsx->rows();
         foreach ($rows as $row) {
-            if (strtolower($row[1]) == strtolower($name)) {
-                $id = $row[0];
+            if (strtolower($row[6]) == strtolower($name)) {
+                $id = $row[1];
+                return searchById($id);
+            } 
+        }         
+    }
+    
+    return null;
+}
+
+function searchByEmail($email) {
+    if ($xlsx = SimpleXLSX::parse('assets/db/CRI24RI001.xlsx')) {
+        $rows = $xlsx->rows();
+        foreach ($rows as $row) {
+            if (strtolower($row[4]) == strtolower($email)) {
+                $id = $row[1];
                 return searchById($id);
             }
         }
@@ -22,15 +37,34 @@ function searchByName($name) {
 }
 
 $response = [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // $post="CRI24RI001";
-if (isset($_POST['query'])) {
-    // if($post){
-    $query = $_POST['query'];
-    $file = searchById($query);
-    if (!$file) {
-        $file = searchByName($query);
-    }
-    $response['file'] = $file;
+// $post="Nkeng Robert";
+// $post="lihtrevor@gmail.com";
+
+$post = isset($_POST["query"]) ? $_POST["query"] : '';
+if (preg_match('/^[A-Za-z]+\s[A-Za-z]+$/', $post)) {
+    // Input is a name
+    $file = searchByName($post);
+} elseif (filter_var($post, FILTER_VALIDATE_EMAIL)) {
+    // Input is an email
+    $file = searchByEmail($post);
+} elseif (preg_match('/^cri\d{2}ri\d{3}$/i', $post)) {
+    // Input is an ID (case-insensitive)
+    $file = searchById(strtoupper($post));
+} else {
+    // Invalid input format
+    $file = null;
+}
+
+// Prepare the response
+$response['file'] = $file;
+} else{
+    header('Location: index.html');
+exit;
+// header('Content-Type: application/json');
+// echo json_encode($response);
 }
 
 header('Content-Type: application/json');
